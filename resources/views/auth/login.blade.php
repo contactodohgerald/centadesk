@@ -1,73 +1,65 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
+<!-- Mirrored from gambolthemes.net/html-items/cursus_demo_f12/sign_in.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Aug 2020 17:44:30 GMT -->
+@include('layouts.head_auth')
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+<body>
+<!-- Signup Start -->
+<div class="sign_in_up_bg">
+    <div class="container">
+        <div class="row justify-content-lg-center justify-content-md-center">
+            <div class="col-lg-12">
+                <div class="main_logo25" id="logo">
+                    <a href="index.html"><img src="images/logo.svg" alt=""></a>
+                    <a href="index.html"><img class="logo-inverse" src="images/ct_logo.svg" alt=""></a>
+                </div>
+            </div>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+            <div class="col-lg-6 col-md-8">
+                <div class="sign_form">
+                    <h2>Welcome Back</h2>
+                    <p>Log In to Your Edututs+ Account!</p>
+                    <button class="social_lnk_btn color_btn_fb"><i class="uil uil-facebook-f"></i>Continue with Facebook</button>
+                    <button class="social_lnk_btn mt-15 color_btn_tw"><i class="uil uil-twitter"></i>Continue with Twitter</button>
+                    <button class="social_lnk_btn mt-15 color_btn_go"><i class="uil uil-google"></i>Continue with Google</button>
+                    <form>
+                        <div class="ui search focus mt-15">
+                            <div class="ui left icon input swdh95">
+                                <input class="prompt srch_explore" type="email" name="emailaddress" value="" id="id_email" required="" maxlength="64" placeholder="Email Address">
+                                <i class="uil uil-envelope icon icon2"></i>
                             </div>
                         </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                        <div class="ui search focus mt-15">
+                            <div class="ui left icon input swdh95">
+                                <input class="prompt srch_explore" type="password" name="password" value="" id="id_password" required="" maxlength="64" placeholder="Password">
+                                <i class="uil uil-key-skeleton-alt icon icon2"></i>
                             </div>
                         </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
+                        <div class="ui form mt-30 checkbox_sign">
+                            <div class="inline field">
+                                <div class="ui checkbox mncheck">
+                                    <input type="checkbox" tabindex="0" class="hidden">
+                                    <label>Remember Me</label>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
+                        <button class="login-btn" type="submit">Sign In</button>
                     </form>
+                    <p class="sgntrm145">Or <a href="forgot_password.html">Forgot Password</a>.</p>
+                    <p class="mb-0 mt-30 hvsng145">Don't have an account? <a href="sign_up.html">Sign Up</a></p>
                 </div>
+                <div class="sign_footer"><img src="images/sign_logo.png" alt="">© 2020 <strong>Cursus</strong>. All Rights Reserved.</div>
             </div>
         </div>
     </div>
 </div>
-@endsection
+<!-- Signup End -->
+
+@include('layouts.e_script_auth')
+
+</body>
+
+<!-- Mirrored from gambolthemes.net/html-items/cursus_demo_f12/sign_in.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Aug 2020 17:44:30 GMT -->
+</html>
