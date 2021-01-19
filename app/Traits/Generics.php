@@ -72,4 +72,34 @@ trait Generics{
 
     }
 
+    public  function createUniqueIdForReferral($length, $table_name, $column){
+
+        $unique = $this->create8randomNumberAndString($length);
+
+        //check for the database count from the database"unique_id"
+        $rowcount = DB::table($table_name)->where($column, $unique)->count();
+
+        if($rowcount == 0){
+            return $unique;
+        }else{
+            $this->createUniqueIdForReferral($length, $table_name, $column);
+        }
+    }
+
+    public  function create8randomNumberAndString($length)
+    {
+        $random = "";
+        srand((double) microtime() * 1000000);
+
+        $data = "123456123456789071234567890890";
+        $data .= "aBCdefghijklmn123opq45rs67tuv89wxyz"; // if you need alphabetic also
+
+        for ($i = 0; $i < $length; $i++) {
+            $random .= substr($data, (rand() % (strlen($data))), 1);
+        }
+
+        return $random;
+
+    }
+
 }

@@ -40,6 +40,18 @@
 
                                 <div class="ui search focus mt-15">
                                     <div class="ui left icon input swdh95">
+                                        <input class="prompt srch_explore @error('referred_id') is-invalid @enderror" type="text" name="referred_id" value="{{ isset($_GET['ref']) ? $_GET['ref'] : old('referred_id') }}" id="referred_id" required maxlength="64" placeholder="Referrer Id">
+                                        <i class="uil uil-airplay icon icon2"></i>
+                                        @error('referred_id')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="ui search focus mt-15">
+                                    <div class="ui left icon input swdh95">
                                         <input class="prompt srch_explore @error('first_name') is-invalid @enderror" type="text" name="first_name" value="{{ old('first_name') }}" id="first_name" required maxlength="64" placeholder="First Name">
                                         <i class="uil uil-info-circle icon icon2"></i>
                                         @error('first_name')

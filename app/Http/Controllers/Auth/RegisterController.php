@@ -52,6 +52,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
+            'referred_id' => ['required'],
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             'user_type' => ['required', 'string',],
@@ -70,12 +71,16 @@ class RegisterController extends Controller
     {
         $unique_id = $this->createUniqueId('users', 'unique_id');
 
+        $referrer_id = $this->createUniqueIdForReferral(8, 'users', 'user_referral_id');
+
         return User::create([
             'unique_id' => $unique_id,
             'name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'user_type' => $data['user_type'],
             'email' => $data['email'],
+            'user_referral_id' => $referrer_id,
+            'referred_id' => $data['referred_id'],
             'password' => Hash::make($data['password']),
         ]);
     }
