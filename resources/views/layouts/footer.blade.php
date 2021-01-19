@@ -148,7 +148,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <p>© 2020 <strong>Cursus</strong>. All Rights Reserved.</p>
+                                    <p>© @php $d=date('Y'); print $d;@endphp <strong>{{env('APP_NAME', 'CENTADESK')}}</strong>. All Rights Reserved.</p>
                                 </li>
                             </ul>
                         </div>
