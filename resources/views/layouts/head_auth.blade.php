@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, shrink-to-fit=9">
     <meta name="description" content="Gambolthemes">
     <meta name="author" content="Gambolthemes">
-    <title>Cursus - Sign Up Next Step</title>
+    <title>{{env('APP_NAME', 'CENTADESK')}} - {{$pageTitle}}</title>
 
     <!-- Favicon Icon -->
     <link rel="icon" type="image/png" href="{{asset('dashboard/images/fav.png')}}">

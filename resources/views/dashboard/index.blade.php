@@ -1,4 +1,5 @@
-﻿@include('layouts.head')
+﻿@php $pageTitle = 'Home Area'; @endphp
+@include('layouts.head')
 
 <body>
 	<!-- Header Start -->

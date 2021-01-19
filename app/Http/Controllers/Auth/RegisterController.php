@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use App\Traits\Generics;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -23,6 +24,7 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
+    use Generics;
 
     /**
      * Where to redirect users after registration.
@@ -50,7 +52,9 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'user_type' => ['required', 'string',],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -64,8 +68,13 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $unique_id = $this->createUniqueId('users', 'unique_id');
+
         return User::create([
-            'name' => $data['name'],
+            'unique_id' => $unique_id,
+            'name' => $data['first_name'],
+            'last_name' => $data['last_name'],
+            'user_type' => $data['user_type'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);

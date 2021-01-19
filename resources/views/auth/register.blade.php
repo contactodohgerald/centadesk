@@ -1,3 +1,4 @@
+@php $pageTitle = 'Registration Area'; @endphp
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,8 +11,12 @@
         <div class="row justify-content-lg-center justify-content-md-center">
             <div class="col-lg-12">
                 <div class="main_logo25" id="logo">
-                    <a href="index.html"><img src="images/logo.svg" alt=""></a>
-                    <a href="index.html"><img class="logo-inverse" src="images/ct_logo.svg" alt=""></a>
+                    <a href="/">
+                        <img src="{{asset('dashboard/images/logo.svg')}}" alt="">
+                    </a>
+                    <a href="/">
+                        <img class="logo-inverse" src="{{asset('dashboard/images/ct_logo.svg')}}" alt="">
+                    </a>
                 </div>
             </div>
 
@@ -30,52 +35,140 @@
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="instructor-signup-tab" role="tabpanel" aria-labelledby="instructor-tab">
                             <p>Sign Up and Create Course!</p>
-                            <form>
-                                <select class="ui hj145 dropdown cntry152 prompt srch_explore">
-                                    <option value="">Select Category</option>
-                                    <option value="1">Development</option>
-                                    <option value="2">Business</option>
-                                    <option value="3">Finance & Accounting</option>
-                                    <option value="4">IT & Software</option>
-                                    <option value="5">Office Productivity</option>
-                                    <option value="6">Personal Development</option>
-                                    <option value="7">Design</option>
-                                    <option value="8">Marketing</option>
-                                    <option value="9">Lifestyle</option>
-                                    <option value="10">Photography</option>
-                                    <option value="11">Health & Fitness</option>
-                                    <option value="12">Music</option>
-                                    <option value="13">Teaching & Academics</option>
-                                </select>
+                            <form method="POST" action="{{ route('register') }}">
+                                @csrf
+
                                 <div class="ui search focus mt-15">
-                                    <div class="ui form swdh30">
-                                        <div class="field">
-                                            <textarea rows="3" name="description" id="id_about" placeholder="Write a little description about you..."></textarea>
-                                        </div>
+                                    <div class="ui left icon input swdh95">
+                                        <input class="prompt srch_explore @error('first_name') is-invalid @enderror" type="text" name="first_name" value="{{ old('first_name') }}" id="first_name" required maxlength="64" placeholder="First Name">
+                                        <i class="uil uil-info-circle icon icon2"></i>
+                                        @error('first_name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
-                                    <div class="help-block">Your biography should have at least 12000 characters.</div>
                                 </div>
+
+                                <div class="ui search focus mt-15">
+                                    <div class="ui left icon input swdh95">
+                                        <input class="prompt srch_explore @error('second_name') is-invalid @enderror" type="text" name="second_name" value="{{ old('second_name') }}" id="second_name" required maxlength="64" placeholder="Second Name">
+                                        <i class="uil uil-info-circle icon icon2"></i>
+                                        @error('second_name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="ui search focus mt-15">
+                                    <div class="ui left icon input swdh95">
+                                        <input class="prompt srch_explore @error('email') is-invalid @enderror" type="email" name="email" value="{{ old('email') }}" id="email" required  placeholder="Email">
+                                        <i class="uil uil-envelope icon icon2"></i>
+                                        @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="ui search focus mt-15">
+                                    <div class="ui left icon input swdh95">
+                                        <input class="prompt srch_explore @error('password') is-invalid @enderror" type="password" name="password" value="{{ old('password') }}" id="password" required  placeholder="Password">
+                                        <i class="uil uil-padlock icon icon2"></i>
+                                        @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+
+                                <div class="ui search focus mt-15">
+                                    <div class="ui left icon input swdh95">
+                                        <input class="prompt srch_explore" type="password" name="password_confirmation" id="password_confirmation" required  placeholder="Confirm Password">
+                                        <i class="uil uil-padlock icon icon2"></i>
+                                    </div>
+                                </div>
+
+                                <input type="hidden" name="user_type" value="teacher">
+
                                 <button class="login-btn" type="submit">Instructor Sign Up Now</button>
                             </form>
                         </div>
-                        <div class="tab-pane fade" id="student-signup-tab" role="tabpanel" aria-labelledby="student-tab">
+                     {{--   <div class="tab-pane fade" id="student-signup-tab" role="tabpanel" aria-labelledby="student-tab">
                             <p>Sign Up and Start Learning!</p>
-                            <form>
+                            <form method="POST" action="{{ route('register') }}">
+                                @csrf
+
                                 <div class="ui search focus mt-15">
-                                    <div class="ui form swdh30">
-                                        <div class="field">
-                                            <textarea rows="3" name="description" id="id_about1" placeholder="Write a little description about you..."></textarea>
-                                        </div>
+                                    <div class="ui left icon input swdh95">
+                                        <input class="prompt srch_explore @error('first_name') is-invalid @enderror" type="text" name="first_name" value="{{ old('first_name') }}" id="first_name" required maxlength="64" placeholder="First Name">
+                                        <i class="uil uil-info-circle icon icon2"></i>
+                                        @error('first_name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
-                                    <div class="help-block">Your biography should have at least 12000 characters.</div>
                                 </div>
+
+                                <div class="ui search focus mt-15">
+                                    <div class="ui left icon input swdh95">
+                                        <input class="prompt srch_explore @error('second_name') is-invalid @enderror" type="text" name="second_name" value="{{ old('second_name') }}" id="second_name" required maxlength="64" placeholder="Second Name">
+                                        <i class="uil uil-info-circle icon icon2"></i>
+                                        @error('second_name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="ui search focus mt-15">
+                                    <div class="ui left icon input swdh95">
+                                        <input class="prompt srch_explore @error('email') is-invalid @enderror" type="email" name="email" value="{{ old('email') }}" id="email" required  placeholder="Email">
+                                        <i class="uil uil-envelope icon icon2"></i>
+                                        @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="ui search focus mt-15">
+                                    <div class="ui left icon input swdh95">
+                                        <input class="prompt srch_explore @error('password') is-invalid @enderror" type="password" name="password" value="{{ old('password') }}" id="password" required  placeholder="Password">
+                                        <i class="uil uil-padlock icon icon2"></i>
+                                        @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="ui search focus mt-15">
+                                    <div class="ui left icon input swdh95">
+                                        <input class="prompt srch_explore" type="password" name="password_confirmation" id="password_confirmation" required  placeholder="Confirm Password">
+                                        <i class="uil uil-padlock icon icon2"></i>
+                                    </div>
+                                </div>
+
+                                <input type="hidden" name="user_type" value="teacher">
                                 <button class="login-btn" type="submit">Student Sign Up Now</button>
                             </form>
-                        </div>
+                        </div>--}}
                     </div>
-                    <p class="mb-0 mt-30">Already have an account? <a href="sign_in.html">Log In</a></p>
+                    <p class="mb-0 mt-30">Already have an account? <a href="{{route('login')}}">Log In</a></p>
                 </div>
-                <div class="sign_footer"><img src="images/sign_logo.png" alt="">© 2020 <strong>Cursus</strong>. All Rights Reserved.</div>
+
+                @include('layouts.footer_auth')
+
             </div>
         </div>
     </div>
