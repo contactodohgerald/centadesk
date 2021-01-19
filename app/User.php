@@ -30,7 +30,8 @@ class User extends Authenticatable
         'unique_id',
         'last_name',
         'user_type',
-        'agent_level_id'
+        'referred_id',
+        'user_referral_id'
     ];
 
     /**
